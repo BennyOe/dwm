@@ -46,3 +46,25 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+==============
+GIT
+=============
+reset the master branch with 'make clean && rm -f config.h && git reset --hard origin/master'
+
+create new branch with 'git branch <<patch_name>>'
+
+apply patch with 'git apply <<path_to_diff>>'
+
+add modified files with 'git add <<file_names>>'
+
+commit with 'git commit <<patch_name>> -m <<patch_name>>'
+
+push with 'git push origin <<branch_name>>'
+
+change to merge branch with 'git checkout <<merge_branch>>'
+
+merge with 'git merge <<patch_branch>>'
+
+fix conflicts
+
