@@ -21,12 +21,12 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static const int horizpadbar        = 0;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 5;        /* vertical padding for statusbar */
+static const int horizpadbar        = 3;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Mononoki Nerd Font:size=12:antialias=true:autohint=true",
+static const char *fonts[]          = { "Mononoki Nerd Font:size=11:antialias=true:autohint=true",
 					"FontAwesome:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=10";
 
@@ -36,6 +36,9 @@ static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#ABB2BF";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#56B6C2";
+static const char col_purple[]      = "#c678DD";
+static const char col_green[]       = "#98c379";
+static const char col_blue[]        = "#61afef";
 static const char col_black[]       = "#000000";
 static const char col_red[]         = "#E06C75";
 static const char col_yellow[]      = "#E5C07B";
@@ -44,7 +47,12 @@ static const char col_white[]       = "#ffffff";
 static const char *colors[][3]      = {
 /*       		   fg         bg          border   */
 	[SchemeNorm] =	 { col_gray3, col_gray1,  col_gray2 },
-	[SchemeSel]  =	 { col_gray4, col_cyan,   col_cyan },
+	[SchemeSel]  =	 { col_gray4, col_cyan,   col_purple },
+	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_gray4, col_blue,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    	[SchemeInfoSel]  = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /*========== Scratchpads ==========*/
@@ -63,7 +71,7 @@ static Sp scratchpads[] = {
 };
 
 /*========== Tagging =========== */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "  1   ", "  2   ", "  3   ", "  4   ", "  5  ", "  6   ", "  7   ", "  8   ", "  9  " };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -89,17 +97,17 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
-	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
+	//{ "[@]",      spiral },
+	//{ "[\\]",     dwindle },
+	//{ "H[]",      deck },
 	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
-	{ "HHH",      grid },
+	//{ "===",      bstackhoriz },
+	//{ "HHH",      grid },
 	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
+	//{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
 	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
+	//{ ">M>",      centeredfloatingmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
