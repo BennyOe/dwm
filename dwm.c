@@ -951,7 +951,6 @@ drawbar(Monitor *m)
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		tw = m->ww - drawstatusbar(m, bh, stext);
-/*		drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);*/
 	}
 
 	resizebarwin(m);
