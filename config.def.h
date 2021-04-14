@@ -187,9 +187,12 @@ static Key keys[] = {
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
 
 	/* Scratchpads */
-	{ MODKEY,            			XK_y,  	   togglescratch,  {.ui = 0 } },
-	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY,      			XK_y,  	   togglescratch,  {.ui = 0 } },
+	{ MODKEY,      			XK_u,	   togglescratch,  {.ui = 1 } },
+	{ MODKEY,      			XK_x,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY,                       XK_minus, scratchpad_show, {0} },
+	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, {0} },
+	{ MODKEY,                       XK_equal,scratchpad_remove,{0} },
 
 	/* Tags */    
 	TAGKEYS(                        XK_1,                      0)
