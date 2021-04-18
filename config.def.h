@@ -45,13 +45,13 @@ static const char col_yellow[]      = "#E5C07B";
 static const char col_white[]       = "#ffffff";
 
 static const char *colors[][3]      = {
-/*       		   fg         bg          border   */
-	[SchemeNorm] =	 { col_gray3, col_gray1,  col_gray2 },
-	[SchemeSel]  =	 { col_gray4, col_cyan,   col_purple },
-	[SchemeStatus]  = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = { col_gray4, col_blue,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+/*       		      fg         bg          border   */
+	[SchemeNorm]      = { col_gray3, col_gray1,  col_gray2  },
+	[SchemeSel]       = { col_gray4, col_cyan,   col_purple },
+	[SchemeStatus]    = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]   = { col_gray4, col_blue,   "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
     	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-    	[SchemeInfoSel]  = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    	[SchemeInfoSel]   = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
     	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
@@ -77,12 +77,24 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      	  instance  i		title 	       	tags mask   		isfloating 		  monitor */
-	{ "Gimp",	  NULL,			NULL,		0,			1,			 -1 },
-	{ "Brave",        NULL,			NULL,		1 << 8,			0,			 -1 },
-	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "keepassxc",		NULL,		SPTAG(2),		0,			 -1 },
+	/* class      	 		 instance  i		title 	       	tags mask   		isfloating 		  monitor */
+	{ "Gimp",	 		 NULL,			NULL,		0,			1,			  -1 },
+	{ "Brave",       		 NULL,			NULL,		1 << 1,			0,			  -1 },
+	{ "mailspring",  		 NULL,                 	NULL,           1 << 3,                 0,                        -1 },
+	{ "Thunar",      		 NULL,                 	NULL,           1 << 4,                 0,                        -1 },
+	{ "jetbrains-clion",         	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-idea",           	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-webstorm",       	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-pycharm",       	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-studio",        	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "signal", 	       		 NULL,                 	NULL,           1 << 5,                 0,                         0 },
+	{ "whatsapp-for-linux", 	 NULL,                 	NULL,           1 << 5,                 0,                         0 },
+	{ "discord", 	 		 NULL,                 	NULL,           1 << 5,                 0,                         0 },
+	{ "zoom", 	 		 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ "Microsoft Teams - Preview", 	 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ NULL,		  		"spterm",		NULL,		SPTAG(0),		1,			  -1 },
+	{ NULL,		  		"spfm",			NULL,		SPTAG(1),		1,			  -1 },
+	{ NULL,		  		"keepassxc",		NULL,		SPTAG(2),		0,			  -1 },
 };
 
 /*========== Layout(s) ========== */
@@ -97,17 +109,10 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
-	//{ "[@]",      spiral },
-	//{ "[\\]",     dwindle },
-	//{ "H[]",      deck },
 	{ "TTT",      bstack },
-	//{ "===",      bstackhoriz },
-	//{ "HHH",      grid },
 	{ "###",      nrowgrid },
-	//{ "---",      horizgrid },
 	{ ":::",      gaplessgrid },
 	{ "|M|",      centeredmaster },
-	//{ ">M>",      centeredfloatingmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
@@ -133,80 +138,75 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	/* modifier                     key        function             argument */
+	{ Mod1Mask,                     XK_space,  spawn,               {.v = "rofi -combi-modi drun, window -modi combi -show combi" } },
+	{ MODKEY,  	 	        XK_Return, spawn,               {.v = termcmd } },
+	{ MODKEY,                       XK_b,      togglebar,           {0} },
+	{ MODKEY,                       XK_j,      focusstack,          {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,          {.i = -1 } },
+	{ MODKEY,                       XK_Up,     incnmaster,          {.i = +1 } },
+	{ MODKEY,                       XK_Down,   incnmaster,          {.i = -1 } },
+	{ MODKEY,                       XK_h,      setmfact,            {.f = -0.05} },
+	{ MODKEY,                       XK_l,      setmfact,            {.f = +0.05} },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,           {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,           {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,                {0} },
+	{ MODKEY,                       XK_Tab,    view,                {0} },
+	{ MODKEY,     	        	XK_q,      killclient,          {0} },
 
 	/* Layout manipulation */
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,         {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, cyclelayout,         {.i = +1 } },
 
 	/* Switch to specific layouts */
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {1} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,                       XK_m,      setlayout,           {.v = &layouts[0]} },
+	{ MODKEY,             		XK_f,      fullscreen,          {1} },
+	{ MODKEY,                       XK_space,  setlayout,           {0} },
+	{ MODKEY|ShiftMask,             XK_space,  togglefloating,      {0} },
+	{ MODKEY,                       XK_0,      view,                {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,                 {.ui = ~0 } },
 
 	/* switching between monitors */
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,            {.i = -1 } },
+	{ MODKEY,                       XK_period, focusmon,            {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_Left,   tagmon,              {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_Right,  tagmon,              {.i = +1 } },
 
 	/* Gaps */
-	{ MODKEY|Mod4Mask,              XK_u,      incrgaps,       {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_u,      incrgaps,       {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_i,      incrigaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_i,      incrigaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_o,      incrogaps,      {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_o,      incrogaps,      {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_6,      incrihgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_6,      incrihgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_7,      incrivgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_7,      incrivgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_8,      incrohgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_8,      incrohgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_9,      incrovgaps,     {.i = +1 } },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_9,      incrovgaps,     {.i = -1 } },
-	{ MODKEY|Mod4Mask,              XK_0,      togglegaps,     {0} },
-	{ MODKEY|Mod4Mask|ShiftMask,    XK_0,      defaultgaps,    {0} },
+	{ MODKEY,                       XK_y,      incrgaps,       	{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_y,      incrgaps,       	{.i = -1 } },
+	{ MODKEY|ControlMask,           XK_y,      togglegaps,     	{0} },
+	{ MODKEY|Mod1Mask,    		XK_y,      defaultgaps,    	{0} },
 
 	/* Scratchpads */
-	{ MODKEY,      			XK_y,  	   togglescratch,  {.ui = 0 } },
-	{ MODKEY,      			XK_u,	   togglescratch,  {.ui = 1 } },
-	{ MODKEY,      			XK_x,	   togglescratch,  {.ui = 2 } },
-	{ MODKEY,                       XK_minus, scratchpad_show, {0} },
-	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, {0} },
-	{ MODKEY,                       XK_equal,scratchpad_remove,{0} },
+	{ MODKEY,      			XK_p,  	   togglescratch,  	{.ui = 0 } },
+	{ MODKEY,                       XK_minus, scratchpad_show, 	{0} },
+	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, 	{0} },
+	{ MODKEY,                       XK_equal,scratchpad_remove,	{0} },
 
 	/* Tags */    
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	TAGKEYS(                        XK_1,                      	0)
+	TAGKEYS(                        XK_2,                      	1)
+	TAGKEYS(                        XK_3,                      	2)
+	TAGKEYS(                        XK_4,                      	3)
+	TAGKEYS(                        XK_5,                      	4)
+	TAGKEYS(                        XK_6,                      	5)
+	TAGKEYS(                        XK_7,                      	6)
+	TAGKEYS(                        XK_8,                      	7)
+	TAGKEYS(                        XK_9,                     	8)
+	{ MODKEY|ShiftMask,             XK_BackSpace,	quit,          {0} },
+	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
+
+	/* Apps */
+	{ MODKEY,  	 	        XK_c, 	  spawn,               {.v = "brave" } },
+	{ MODKEY,  	 	        XK_x, 	  spawn,               {.v = "st -e 'ranger'" } },
+	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               {.v = "signal-desktop; whatsapp-for-linux; discord" } },
+	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               {.v = "pkill picom" } },
+	{ MODKEY|ControlMask,  	 	XK_t, 	  spawn,               {.v = "picom -b" } },
+	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               {.v = "pavucontrol" } },
+	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               {.v = "mailspring" } },
+	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               {.v = "flameshot gui" } },
+
 };
 
 /*========== Button definitions ==========*/
