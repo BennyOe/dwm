@@ -127,6 +127,7 @@ static const Layout layouts[] = {
 	{ MODKEY|Mod4Mask,              KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
 	{ MODKEY|Mod4Mask|ShiftMask,    KEY,      tagprevmon,     {.ui = 1 << TAG} },
 
+#define CMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
@@ -139,7 +140,7 @@ static const char *termcmd[]  = { "st", NULL };
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function             argument */
-	{ Mod1Mask,                     XK_space,  spawn,               {.v = "rofi -combi-modi drun, window -modi combi -show combi" } },
+	{ Mod1Mask,                     XK_space,  spawn,               CMD("rofi -show drun") },
 	{ MODKEY,  	 	        XK_Return, spawn,               {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,           {0} },
 	{ MODKEY,                       XK_j,      focusstack,          {.i = +1 } },
@@ -198,14 +199,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
 	/* Apps */
-	{ MODKEY,  	 	        XK_c, 	  spawn,               {.v = "brave" } },
-	{ MODKEY,  	 	        XK_x, 	  spawn,               {.v = "st -e 'ranger'" } },
-	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               {.v = "signal-desktop; whatsapp-for-linux; discord" } },
-	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               {.v = "pkill picom" } },
-	{ MODKEY|ControlMask,  	 	XK_t, 	  spawn,               {.v = "picom -b" } },
-	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               {.v = "pavucontrol" } },
-	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               {.v = "mailspring" } },
-	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               {.v = "flameshot gui" } },
+	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("brave") },
+	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
+	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("signal-desktop; whatsapp-for-linux; discord") },
+	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               CMD("pkill picom") },
+	{ MODKEY|ControlMask,  	 	XK_t, 	  spawn,               CMD("picom -b") },
+	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
+	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
+	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
 
 };
 
