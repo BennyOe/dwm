@@ -26,7 +26,7 @@ static const int vertpadbar         = 6;        /* vertical padding for statusba
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Mononoki Nerd Font:size=11:antialias=true:autohint=true",
+static const char *fonts[]          = { "Jetbrains Nerd Font:size=11:antialias=true:autohint=true",
 					"FontAwesome:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=10";
 
@@ -71,7 +71,7 @@ static Sp scratchpads[] = {
 };
 
 /*========== Tagging =========== */
-static const char *tags[] = { "  1   ", "  2   ", "  3   ", "  4   ", "  5  ", "  6   ", "  7   ", "  8   ", "  9  " };
+static const char *tags[] = { "  1   ", "  2   ", "  3   ", "  4   ", "  5   ", "  6   ", "  7   ", "  8   ", "  9  " };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -92,6 +92,7 @@ static const Rule rules[] = {
 	{ "discord", 	 		 NULL,                 	NULL,           1 << 5,                 0,                         0 },
 	{ "zoom", 	 		 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
 	{ "Microsoft Teams - Preview", 	 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ "Pavucontrol",	 	 NULL,                 	NULL,           0,   	  	        1,                        -1 },
 	{ NULL,		  		"spterm",		NULL,		SPTAG(0),		1,			  -1 },
 	{ NULL,		  		"spfm",			NULL,		SPTAG(1),		1,			  -1 },
 	{ NULL,		  		"keepassxc",		NULL,		SPTAG(2),		0,			  -1 },
@@ -138,6 +139,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 
 #include "movestack.c"
+#include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function             argument */
 	{ Mod1Mask,                     XK_space,  spawn,               CMD("rofi -show drun") },
@@ -195,6 +197,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      	6)
 	TAGKEYS(                        XK_8,                      	7)
 	TAGKEYS(                        XK_9,                     	8)
+	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -width 20 -lines 5") },
 	{ MODKEY|ShiftMask,             XK_BackSpace,	quit,          {0} },
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
@@ -207,6 +210,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
 	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
 	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
+
+	/* Media */
+	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
+	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5") },
+	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle") },
 
 };
 
