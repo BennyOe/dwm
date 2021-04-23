@@ -205,13 +205,15 @@ static Key keys[] = {
 	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("brave") },
 	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
 	{ MODKEY,  	 	        XK_e, 	  spawn,               CMD("thunar") },
-	{ MODKEY,  	 	        XK_l, 	  spawn,               CMD("multilockscreen -l dimblur") },
+	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("multilockscreen -l dimblur") },
 	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("signal-desktop; whatsapp-for-linux; discord") },
 	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               CMD("pkill picom") },
 	{ MODKEY|ControlMask,  	 	XK_t, 	  spawn,               CMD("picom -b") },
 	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
 	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
 	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
+	{ ControlMask|Mod1Mask,  	 	XK_e, 	  spawn,               CMD("enkeys") },
+	{ ControlMask|Mod1Mask,  	 	XK_d, 	  spawn,               CMD("dekeys") },
 
 	/* Media */
 	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
