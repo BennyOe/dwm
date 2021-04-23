@@ -212,8 +212,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
 	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
 	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
-	{ ControlMask|Mod1Mask,  	 	XK_e, 	  spawn,               CMD("enkeys") },
-	{ ControlMask|Mod1Mask,  	 	XK_d, 	  spawn,               CMD("dekeys") },
+	{ MODKEY|ControlMask,  	 	XK_e, 	  spawn,               CMD("~/.local/bin/enkeys") },
+	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
 	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
