@@ -2855,7 +2855,7 @@ view(const Arg *arg)
 		togglebar(NULL);
 
 	focus(NULL);
-	arrange(selmon);
+    arrange(selmon);
 }
 
 Client *
