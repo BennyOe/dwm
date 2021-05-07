@@ -142,88 +142,88 @@ static const char *termcmd[]  = { "st", NULL };
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function             argument */
-	{ Mod1Mask,                     XK_space,  spawn,               CMD("rofi -show drun") },
-	{ MODKEY,  	 	        XK_Return, spawn,               {.v = termcmd } },
-	{ MODKEY,                       XK_b,      togglebar,           {0} },
-	{ MODKEY,                       XK_j,      focusstack,          {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,          {.i = -1 } },
-	{ MODKEY,                       XK_Up,     incnmaster,          {.i = +1 } },
-	{ MODKEY,                       XK_Down,   incnmaster,          {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,            {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,            {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,           {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,           {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,                {0} },
-	{ MODKEY,                       XK_Tab,    view,                {0} },
-	{ MODKEY,     	        	XK_q,      killclient,          {0} },
+	{ Mod1Mask,                     65,  spawn,               CMD("rofi -show drun") },
+	{ MODKEY,  	 	                36, spawn,               {.v = termcmd } },
+	{ MODKEY,                       56,      togglebar,           {0} },
+	{ MODKEY,                       44,      focusstack,          {.i = +1 } },
+	{ MODKEY,                       45,      focusstack,          {.i = -1 } },
+	{ MODKEY,                       111,     incnmaster,          {.i = +1 } },
+	{ MODKEY,                       116,   incnmaster,          {.i = -1 } },
+	{ MODKEY,                       43,      setmfact,            {.f = -0.05} },
+	{ MODKEY,                       46,      setmfact,            {.f = +0.05} },
+	{ MODKEY|ShiftMask,             44,      movestack,           {.i = +1 } },
+	{ MODKEY|ShiftMask,             45,      movestack,           {.i = -1 } },
+	{ MODKEY|ShiftMask,             36, zoom,                {0} },
+	{ MODKEY,                       23,    view,                {0} },
+	{ MODKEY,     	        	    24,      killclient,          {0} },
 
 	/* Layout manipulation */
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,         {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,         {.i = +1 } },
+	{ MODKEY|ControlMask,		59,  cyclelayout,         {.i = -1 } },
+	{ MODKEY|ControlMask,           60, cyclelayout,         {.i = +1 } },
 
 	/* Switch to specific layouts */
-	{ MODKEY,                       XK_m,      setlayout,           {.v = &layouts[0]} },
-	{ MODKEY,             		XK_f,      fullscreen,          {1} },
-	{ MODKEY,                       XK_space,  setlayout,           {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating,      {0} },
-	{ MODKEY,                       XK_0,      view,                {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,                 {.ui = ~0 } },
+	{ MODKEY,                       58,      setlayout,           {.v = &layouts[0]} },
+	{ MODKEY,             		41,      fullscreen,          {1} },
+	{ MODKEY,                       65,  setlayout,           {0} },
+	{ MODKEY|ShiftMask,             65,  togglefloating,      {0} },
+	{ MODKEY,                       19,      view,                {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             19,      tag,                 {.ui = ~0 } },
 
 	/* switching between monitors */
-	{ MODKEY,                       XK_comma,  focusmon,            {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,            {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_Left,   tagmon,              {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_Right,  tagmon,              {.i = +1 } },
+	{ MODKEY,                       59,  focusmon,            {.i = -1 } },
+	{ MODKEY,                       60, focusmon,            {.i = +1 } },
+	{ MODKEY|ControlMask,           113,   tagmon,              {.i = -1 } },
+	{ MODKEY|ControlMask,           114,  tagmon,              {.i = +1 } },
 
 	/* Gaps */
-	{ MODKEY,                       XK_y,      incrgaps,       	{.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_y,      incrgaps,       	{.i = -5 } },
-	{ MODKEY|ControlMask,           XK_y,      togglegaps,     	{0} },
-	{ MODKEY|Mod1Mask,    		XK_y,      defaultgaps,    	{0} },
+	{ MODKEY,                       52,      incrgaps,       	{.i = +5 } },
+	{ MODKEY|ShiftMask,             52,      incrgaps,       	{.i = -5 } },
+	{ MODKEY|ControlMask,           52,      togglegaps,     	{0} },
+	{ MODKEY|Mod1Mask,    		52,      defaultgaps,    	{0} },
 
 	/* Scratchpads */
-	{ MODKEY,      			XK_p,  	   togglescratch,  	{.ui = 0 } },
-	{ MODKEY,                       XK_minus, scratchpad_show, 	{0} },
-	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, 	{0} },
-	{ MODKEY,                       XK_equal,scratchpad_remove,	{0} },
+	{ MODKEY,      			33,  	   togglescratch,  	{.ui = 0 } },
+	{ MODKEY,                       61, scratchpad_show, 	{0} },
+	{ MODKEY|ShiftMask,             61, scratchpad_hide, 	{0} },
+	//{ MODKEY,                       ,scratchpad_remove,	{0} },
 
 	/* Tags */    
-	TAGKEYS(                        XK_1,                      	0)
-	TAGKEYS(                        XK_2,                      	1)
-	TAGKEYS(                        XK_3,                      	2)
-	TAGKEYS(                        XK_4,                      	3)
-	TAGKEYS(                        XK_5,                      	4)
-	TAGKEYS(                        XK_6,                      	5)
-	TAGKEYS(                        XK_7,                      	6)
-	TAGKEYS(                        XK_8,                      	7)
-	TAGKEYS(                        XK_9,                     	8)
-	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -width 20 -lines 5") },
-	{ MODKEY|ShiftMask,             XK_BackSpace,	quit,          {0} },
-	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
+	TAGKEYS(                        10,                      	0)
+	TAGKEYS(                        11,                      	1)
+	TAGKEYS(                        12,                      	2)
+	TAGKEYS(                        13,                      	3)
+	TAGKEYS(                        14,                      	4)
+	TAGKEYS(                        15,                      	5)
+	TAGKEYS(                        16,                      	6)
+	TAGKEYS(                        17,                      	7)
+	TAGKEYS(                        18,                     	8)
+	{ MODKEY,             		22,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -width 20 -lines 5") },
+	{ MODKEY|ShiftMask,             22,	quit,          {0} },
+	{ MODKEY|ShiftMask, 		27,      	quit,          {1} },
 
 	/* Apps */
-	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("brave") },
-	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
-	{ MODKEY,  	 	        XK_e, 	  spawn,               CMD("thunar") },
+	{ MODKEY,  	 	        54, 	  spawn,               CMD("brave") },
+	{ MODKEY,  	 	        53, 	  spawn,               CMD("st -e 'ranger'") },
+	{ MODKEY,  	 	        26, 	  spawn,               CMD("thunar") },
 	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("multilockscreen -l dimblur") },
 //{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("signal-desktop; whatsapp-for-linux; discord") },
-	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("~/.local/bin/communications.sh") },
-	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               CMD("pkill picom") },
-	{ MODKEY|ControlMask,  	 	XK_t, 	  spawn,               CMD("picom -b") },
-	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
-	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
-	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
-	{ MODKEY|ControlMask,  	 	XK_e, 	  spawn,               CMD("~/.local/bin/enkeys") },
-	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
+	{ MODKEY|ShiftMask,  	 	54, 	  spawn,               CMD("~/.local/bin/communications.sh") },
+	{ MODKEY|ShiftMask,  	 	28, 	  spawn,               CMD("pkill picom") },
+	{ MODKEY|ControlMask,  	 	28, 	  spawn,               CMD("picom -b") },
+	{ MODKEY|ControlMask,  	 	58, 	  spawn,               CMD("pavucontrol") },
+	{ MODKEY|ShiftMask,  	 	58, 	  spawn,               CMD("mailspring") },
+	{ MODKEY|ShiftMask,  	 	39, 	  spawn,               CMD("flameshot gui") },
+	{ MODKEY|ControlMask,  	 	26, 	  spawn,               CMD("~/.local/bin/enkeys") },
+	{ MODKEY|ControlMask,  	 	40, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
-	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5") },
-	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle") },
+	{ 0	,			114, spawn, CMD("ponymix decrease 5") },
+	{ 0	,			115, spawn, CMD("ponymix increase 5") },
+	{ 0	,			113, spawn, CMD("ponymix toggle") },
 
     /* Brightness */
-	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
-	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
+	{ 0	,			225, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
+	{ 0	,			224, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
 
 };
 
