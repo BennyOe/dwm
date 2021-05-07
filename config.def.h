@@ -217,13 +217,13 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
-	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5") },
-	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle") },
+{ 0	,				XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle; ~/.local/bin/volume.sh") },
 
     /* Brightness */
-	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
-	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
+	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; ~/.local/bin/brightness.sh") },
+	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; ~/.local/bin/brightness.sh") },
 
 };
 
