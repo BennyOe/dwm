@@ -147,8 +147,8 @@ static Key keys[] = {
 	{ MODKEY,                       56,      togglebar,           {0} },
 	{ MODKEY,                       44,      focusstack,          {.i = +1 } },
 	{ MODKEY,                       45,      focusstack,          {.i = -1 } },
-	{ MODKEY,                       103,     incnmaster,          {.i = +1 } },
-	{ MODKEY,                       108,   incnmaster,          {.i = -1 } },
+	{ MODKEY,                       111,     incnmaster,          {.i = +1 } },
+	{ MODKEY,                       116,   incnmaster,          {.i = -1 } },
 	{ MODKEY,                       43,      setmfact,            {.f = -0.05} },
 	{ MODKEY,                       46,      setmfact,            {.f = +0.05} },
 	{ MODKEY|ShiftMask,             44,      movestack,           {.i = +1 } },
@@ -172,8 +172,8 @@ static Key keys[] = {
 	/* switching between monitors */
 	{ MODKEY,                       59,  focusmon,            {.i = -1 } },
 	{ MODKEY,                       60, focusmon,            {.i = +1 } },
-	{ MODKEY|ControlMask,           105,   tagmon,              {.i = -1 } },
-	{ MODKEY|ControlMask,           106,  tagmon,              {.i = +1 } },
+	{ MODKEY|ControlMask,           113,   tagmon,              {.i = -1 } },
+	{ MODKEY|ControlMask,           114,  tagmon,              {.i = +1 } },
 
 	/* Gaps */
 	{ MODKEY,                       52,      incrgaps,       	{.i = +5 } },
@@ -217,13 +217,13 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	40, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-	//{ 0	,			114, spawn, CMD("ponymix decrease 5") },
-	//{ 0	,			115, spawn, CMD("ponymix increase 5") },
-	//{ 0	,			113, spawn, CMD("ponymix toggle") },
+	{ 0	,			114, spawn, CMD("ponymix decrease 5") },
+	{ 0	,			115, spawn, CMD("ponymix increase 5") },
+	{ 0	,			113, spawn, CMD("ponymix toggle") },
 
     /* Brightness */
-	{ 0	,			233, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
-	{ 0	,			232, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
+	{ 0	,			225, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
+	{ 0	,			224, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
 
 };
 
