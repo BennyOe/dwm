@@ -295,6 +295,9 @@ static int xerror(Display *dpy, XErrorEvent *ee);
 static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
+static void tilemovemouse(const Arg *arg);
+static void insertafter(Client *a, Client *b);
+static void insertbefore(Client *a, Client *b);
 
 /* variables */
 static Systray *systray =  NULL;
@@ -1044,11 +1047,12 @@ drawbar(Monitor *m)
 	if ((w = m->ww - tw - stw - x) > bh) {
 		if (m->sel) {
             /* fix overflow when window name is bigger than window width */
-			int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;
+			/*int mid = (m->ww - (int)TEXTW(m->sel->name)) / 2 - x;*/
 			/* make sure name will not overlap on tags even when it is very long */
-			mid = mid >= lrpad / 2 ? mid : lrpad / 2;
+			/*mid = mid >= lrpad / 2 ? mid : lrpad / 2;*/
 			drw_setscheme(drw, scheme[m == selmon ? SchemeInfoSel : SchemeInfoNorm]);
-			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
+            drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+			/*drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);*/
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
@@ -2986,6 +2990,69 @@ zoom(const Arg *arg)
 	}
 	focus(c);
 	arrange(c->mon);
+}
+
+//Move tiled windows with mouse
+void
+insertbefore(Client *a, Client *b)	/* insert a before b in the client list */
+{
+	Client **x = &selmon->clients;
+	
+	while(*x != b && *x)
+		x = & (*x)->next;
+	*x = a;
+	a->next = b;
+}
+
+void
+insertafter(Client *a, Client *b)	/* insert a after b in the client list */
+{
+	a->next = b->next;
+	b->next = a;
+}
+
+void
+tilemovemouse(const Arg *arg) {
+	/* Could EnterNotify events be used instead? */
+	Client *c, *d;
+	XEvent ev;
+	int x, y;
+	Bool after;
+
+	if(!(c = selmon->sel))
+		return;
+	if(c->isfloating || !selmon->lt[selmon->sellt]->arrange){
+		movemouse(NULL);
+		return;
+	}
+	if(XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
+	None, cursor[CurMove]->cursor, CurrentTime) != GrabSuccess)
+		return;
+	do {
+		XMaskEvent(dpy, MOUSEMASK|ExposureMask|SubstructureRedirectMask, &ev);
+		switch (ev.type) {
+		case ConfigureRequest:
+		case Expose:
+		case MapRequest:
+			handler[ev.type](&ev);
+			break;
+		case MotionNotify:
+			x = ev.xmotion.x;
+			y = ev.xmotion.y;
+			after = False;
+			for(d = nexttiled(selmon->clients); d; d = nexttiled(d->next)){
+				if(d == c)
+					after = True;
+				else if(INRECT(x, y, d->x, d->y, d->w+2*borderpx, d->h+2*borderpx)){
+					detach(c);
+					after ? insertafter(c, d) : insertbefore(c,d);
+					arrange(c->mon);
+					break;
+				}
+			}
+		}
+	} while(ev.type != ButtonRelease);
+	XUngrabPointer(dpy, CurrentTime);
 }
 
 int
