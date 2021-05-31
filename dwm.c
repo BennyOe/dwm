@@ -77,6 +77,7 @@
 #define VERSION_MAJOR               0
 #define VERSION_MINOR               0
 #define XEMBED_EMBEDDED_VERSION (VERSION_MAJOR << 16) | VERSION_MINOR
+#define INRECT(x,y,x1,y1,x2,y2) (x1 <= x && x <= x2 && y1 <= y && y <= y2)
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
