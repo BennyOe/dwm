@@ -142,4 +142,6 @@ https://dwm.suckless.org/patches/zoomswap/
 
 ### tilemousemove
 drag and drop clients with the mouse to rearrange them.
+based on https://dwm.suckless.org/patches/historical/tilemovemouse/
+with heavy customization to work with dwm 6.2 and the other patches
 
