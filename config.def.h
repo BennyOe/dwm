@@ -108,13 +108,13 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
+    { "|M|",      centeredmaster },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
 	{ "TTT",      bstack },
 	{ "###",      nrowgrid },
 	{ ":::",      gaplessgrid },
     { "===",      bstackhoriz },
-	{ "|M|",      centeredmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
@@ -218,7 +218,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-{ 0	,				XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
 	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5; ~/.local/bin/volume.sh") },
 	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle; ~/.local/bin/volume.sh") },
 
@@ -236,7 +236,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+    { ClkClientWin,         MODKEY,         Button1,        tilemovemouse,  {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY|ShiftMask,         Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
