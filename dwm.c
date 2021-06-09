@@ -3014,13 +3014,6 @@ insertafter(Client *a, Client *b)	/* insert a after b in the client list */
 
 void
 tilemovemouse(const Arg *arg) {
-    FILE *log = NULL;
-
-    if (!(log = fopen("/tmp/dwm.log", "w+"))) {
-        /* The file couldn't be opened; handle this error. */
-        printf("No");
-    }
-
     /* Could EnterNotify events be used instead? */
     Client *c, *d;
     XEvent ev;
@@ -3049,10 +3042,6 @@ tilemovemouse(const Arg *arg) {
                 y = ev.xmotion.y;
                 after = False;
                 for(d = nexttiled(selmon->clients); d; d = nexttiled(d->next)){
-                    fprintf(log, "x: %d y: %d d->x: %d d->y: %d d->w %d d->h %d\n", x, y, d->x, d->y, d->w+2*borderpx, d->h+2*borderpx);
-                    fprintf(log, "result of INRECT: %d\n", INRECT(x, y, d->x, d->y, d->w+2*borderpx, d->h+2*borderpx));
-                    fprintf(log, "selmon: %p\n", selmon->clients);
-                    fprintf(log, "nexttiled: %p\n", d);
                     if(d == c) after = True;
                     else if(INRECT(x, y, d->x, d->y, d->x + d->w+2*borderpx, d->y + d->h+2*borderpx)){
                         detach(c);
