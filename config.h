@@ -77,25 +77,25 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      	 		 instance  i		title 	       	tags mask   		isfloating 		  monitor */
-	{ "Gimp",	 		 NULL,			NULL,		0,			1,			  -1 },
-	//{ "Brave",       		 NULL,			NULL,		1 << 1,			0,			  -1 },
-	{ "Mailspring",  		 NULL,                 	NULL,           1 << 3,                 0,                        -1 },
-	//{ "Thunar",      		 NULL,                 	NULL,           1 << 4,                 0,                        -1 },
-	{ "jetbrains-clion",         	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
-	{ "jetbrains-idea",           	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
-	{ "jetbrains-webstorm",       	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
-	{ "jetbrains-pycharm",       	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
-	{ "jetbrains-studio",        	 NULL,                 	NULL,           1 << 2,                 0,                        -1 },
-	{ "Signal", 	       		 NULL,                 	NULL,           1 << 5,                 0,                         -1 },
-	{ "Whatsapp-for-linux", 	 NULL,                 	NULL,           1 << 5,                 0,                         -1 },
-	{ "discord", 	 		 NULL,                 	NULL,           1 << 5,                 0,                         -1 },
-	{ "zoom", 	 		 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
-	{ "teams-for-linux", 	 NULL,                 	NULL,           1 << 6,                 0,                        -1 },
-	{ "Pavucontrol",	 	 NULL,                 	NULL,           0,   	  	        1,                        -1 },
-	{ NULL,		  		"spterm",		NULL,		SPTAG(0),		1,			  -1 },
-	{ NULL,		  		"spfm",			NULL,		SPTAG(1),		1,			  -1 },
-	{ NULL,		  		"keepassxc",		NULL,		SPTAG(2),		0,			  -1 },
+	/* class      	 		                    instance  i		title 	       	tags mask   		isfloating 		  monitor */
+	{ "Gimp",	 		                        NULL,			NULL,		0,			1,			  -1 },
+	//{ "Brave",       		                    NULL,			NULL,		1 << 1,			0,			  -1 },
+	{ "Mailspring",  		                    NULL,                 	NULL,           1 << 3,                 0,                        -1 },
+	//{ "Thunar",      		                    NULL,                 	NULL,           1 << 4,                 0,                        -1 },
+	{ "jetbrains-clion",         	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-idea",           	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-webstorm",       	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-pycharm",       	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "jetbrains-studio",        	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
+	{ "Signal", 	       		                NULL,                 	NULL,           1 << 5,                 0,                         1 },
+	{ "Whatsapp-for-linux", 	                NULL,                 	NULL,           1 << 5,                 0,                         1 },
+	{ "discord", 	 		                    NULL,                 	NULL,           1 << 5,                 0,                         1 },
+	{ "zoom", 	 		                        NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ "Microsoft Teams - Preview", 	            NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ "Pavucontrol",	 	                    NULL,                 	NULL,           0,   	  	        1,                        -1 },
+	{ NULL,		  		"spterm",		        NULL,		SPTAG(0),		1,			  -1 },
+	{ NULL,		  		"spfm",			        NULL,		SPTAG(1),		1,			  -1 },
+	{ NULL,		  		"keepassxc",		    NULL,		SPTAG(2),		0,			  -1 },
 };
 
 /*========== Layout(s) ========== */
@@ -218,13 +218,13 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-{ 0	,				XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
-	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5; ~/.local/bin/volume.sh") },
-	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5") },
+	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5") },
+	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle") },
 
     /* Brightness */
-	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; ~/.local/bin/brightness.sh") },
-	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; ~/.local/bin/brightness.sh") },
+	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; notify-send 'brightness up'") },
+	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; notify-send 'brightness down'") },
 
 };
 
@@ -238,7 +238,7 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY|ShiftMask,         Button1,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY,         Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
