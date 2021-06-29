@@ -221,6 +221,8 @@ static Key keys[] = {
 	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
 	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5; ~/.local/bin/volume.sh") },
 	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle; ~/.local/bin/volume.sh") },
+	{ MODKEY|ControlMask,  	 	XK_h, 	  spawn,               CMD("~/.local/bin/audio2HDMI") },
+	{ MODKEY|ControlMask,  	 	XK_u, 	  spawn,               CMD("~/.local/bin/audio2USB") },
 
     /* Brightness */
 	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; ~/.local/bin/brightness.sh") },
