@@ -228,6 +228,10 @@ static Key keys[] = {
 	{ 0	,			XF86XK_MonBrightnessUp, spawn, CMD("xbacklight -inc 10; ~/.local/bin/brightness.sh") },
 	{ 0	,			XF86XK_MonBrightnessDown, spawn, CMD("xbacklight -dec 10; ~/.local/bin/brightness.sh") },
 
+    /* Hue Control */
+	{ MODKEY|ControlMask,  	 	XK_l, 	  spawn,               CMD("~/.local/bin/lightsOn") },
+	{ MODKEY|ShiftMask,  	 	XK_l, 	  spawn,               CMD("~/.local/bin/lightsOff") },
+
 };
 
 /*========== Button definitions ==========*/
