@@ -92,6 +92,7 @@ static const Rule rules[] = {
 	{ "discord", 	 		                    NULL,                 	NULL,           1 << 5,                 0,                         1 },
 	{ "zoom", 	 		                        NULL,                 	NULL,           1 << 6,                 0,                        -1 },
 	{ "teams-for-linux", 	                    NULL,                 	NULL,           1 << 6,                 0,                        -1 },
+	{ "microsoft teams - preview", 	            NULL,                 	NULL,           1 << 6,                 0,                        -1 },
 	{ "Pavucontrol",	 	                    NULL,                 	NULL,           0,   	  	            1,                        -1 },
 	{ NULL,		  		"spterm",		        NULL,		SPTAG(0),		1,			  -1 },
 	{ NULL,		  		"spfm",			        NULL,		SPTAG(1),		1,			  -1 },
