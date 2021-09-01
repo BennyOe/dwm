@@ -199,7 +199,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      	6)
 	TAGKEYS(                        XK_8,                      	7)
 	TAGKEYS(                        XK_9,                     	8)
-	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -width 20 -lines 5") },
+	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme-str 'window {width: 10%;} listview {lines: 5;}'")},
 	{ MODKEY|ShiftMask,             XK_BackSpace,	quit,          {0} },
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
@@ -219,8 +219,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
-	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 5; ~/.local/bin/volume.sh") },
-	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 5; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioLowerVolume, spawn, CMD("ponymix decrease 2; ~/.local/bin/volume.sh") },
+	{ 0	,			XF86XK_AudioRaiseVolume, spawn, CMD("ponymix increase 2; ~/.local/bin/volume.sh") },
 	{ 0	,			XF86XK_AudioMute, spawn, CMD("ponymix toggle; ~/.local/bin/volume.sh") },
 	{ MODKEY|ControlMask,  	 	XK_h, 	  spawn,               CMD("~/.local/bin/audio2HDMI") },
 	{ MODKEY|ControlMask,  	 	XK_u, 	  spawn,               CMD("~/.local/bin/audio2USB") },
