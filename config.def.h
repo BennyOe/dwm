@@ -215,7 +215,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_m, 	  spawn,               CMD("pavucontrol") },
 	{ MODKEY|ShiftMask,  	 	XK_m, 	  spawn,               CMD("mailspring") },
 	{ MODKEY|ShiftMask,  	 	XK_s, 	  spawn,               CMD("flameshot gui") },
-	{ MODKEY|ControlMask,  	 	XK_e, 	  spawn,               CMD("~/.local/bin/enkeys") },
+	{ MODKEY|ControlMask,  	 	XK_e, 	  spawn,               CMD("~/.local/bin/uskeys") },
 	{ MODKEY|ControlMask,  	 	XK_d, 	  spawn,               CMD("~/.local/bin/dekeys") },
 
 	/* Media */
