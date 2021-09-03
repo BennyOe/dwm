@@ -198,7 +198,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      	6)
 	TAGKEYS(                        XK_8,                      	7)
 	TAGKEYS(                        XK_9,                     	8)
-	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -width 20 -lines 5") },
+	{ MODKEY,             		XK_BackSpace,	spawn,         CMD("rofi -show p -modi p:~/.local/bin/rofi-power-menu -theme-str 'window {width: 10%;} listview {lines: 5;}'")},
 	{ MODKEY|ShiftMask,             XK_BackSpace,	quit,          {0} },
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
