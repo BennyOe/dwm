@@ -207,7 +207,7 @@ static Key keys[] = {
 	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("brave") },
 	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
 	{ MODKEY,  	 	        XK_e, 	  spawn,               CMD("thunar") },
-	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("multilockscreen -l dimblur") },
+	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("betterlockscreen -l dimblur") },
 //{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("signal-desktop; whatsapp-for-linux; discord") },
 	{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("~/.local/bin/communications.sh") },
 	{ MODKEY|ShiftMask,  	 	XK_t, 	  spawn,               CMD("pkill picom") },
