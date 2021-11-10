@@ -26,9 +26,9 @@ static const int vertpadbar         = 6;        /* vertical padding for statusba
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Jetbrains Nerd Font:size=7:antialias=true:autohint=true",
-					"FontAwesome:size=6:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=6";
+static const char *fonts[]          = { "Jetbrains Nerd Font:size=10:antialias=true:autohint=true",
+					"FontAwesome:size=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=10";
 
 /*========== Colors and Opacity ==========*/
 static const char col_gray1[]       = "#282c34";
