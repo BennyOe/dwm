@@ -26,9 +26,9 @@ static const int vertpadbar         = 6;        /* vertical padding for statusba
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Jetbrains Nerd Font:size=11:antialias=true:autohint=true",
-					"FontAwesome:size=10:antialias=true:autohint=true" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "Jetbrains Nerd Font:size=7:antialias=true:autohint=true",
+					"FontAwesome:size=6:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=6";
 
 /*========== Colors and Opacity ==========*/
 static const char col_gray1[]       = "#282c34";
@@ -189,7 +189,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_minus, scratchpad_hide, 	{0} },
 	{ MODKEY,                       XK_equal,scratchpad_remove,	{0} },
 
-	/* Tags */    
+	/* Tags */
 	TAGKEYS(                        XK_1,                      	0)
 	TAGKEYS(                        XK_2,                      	1)
 	TAGKEYS(                        XK_3,                      	2)
