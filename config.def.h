@@ -26,7 +26,7 @@ static const int vertpadbar         = 6;        /* vertical padding for statusba
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Jetbrains Nerd Font:size=11:antialias=true:autohint=true",
+static const char *fonts[]          = { "Ubuntu:size=12:antialias=true:autohint=true",
 					"FontAwesome:size=10:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=10";
 

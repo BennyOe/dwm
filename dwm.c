@@ -2571,7 +2571,6 @@ updategeom(void)
                     m->clients = c->next;
                     detachstack(c);
                     c->mon = mons;
-                    attach(c);
                     attachaside(c);
                     attachstack(c);
                 }
