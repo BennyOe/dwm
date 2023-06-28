@@ -26,8 +26,8 @@ static const int vertpadbar         = 6;        /* vertical padding for statusba
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[]          = { "Ubuntu:size=12:antialias=true:autohint=true",
-					"FontAwesome:size=10:antialias=true:autohint=true" };
+static const char *fonts[]          = { "Ubuntu Nerd Font:size=12:antialias=true:autohint=true",
+					"FontAwesome:size=12:antialias=true:autohint=true" };
 static const char dmenufont[]       = "monospace:size=10";
 
 /*========== Colors and Opacity ==========*/
@@ -204,7 +204,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
 	/* Apps */
-	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("brave") },
+	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("firefox") },
 	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
 	{ MODKEY,  	 	        XK_e, 	  spawn,               CMD("thunar") },
 	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("betterlockscreen -l dimblur") },
@@ -233,6 +233,8 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,  	 	XK_l, 	  spawn,               CMD("~/.local/bin/lightsOn") },
 	{ MODKEY|ShiftMask,  	 	XK_l, 	  spawn,               CMD("~/.local/bin/lightsOff") },
 
+    /* Toggle Touchpad */
+    { 0	,			XF86XK_TouchpadToggle, spawn, CMD("~/.local/bin/touchpadtoggle") },
 };
 
 /*========== Button definitions ==========*/
