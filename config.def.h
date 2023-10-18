@@ -49,7 +49,7 @@ static const char *colors[][3]      = {
 	[SchemeNorm]      = { col_gray3, col_gray1,  col_gray2  },
 	[SchemeSel]       = { col_gray4, col_cyan,   col_purple },
 	[SchemeStatus]    = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]   = { col_gray4, col_blue,   "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]   = { col_gray1, col_blue,   "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
     	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
     	[SchemeInfoSel]   = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
     	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
@@ -71,7 +71,7 @@ static Sp scratchpads[] = {
 };
 
 /*========== Tagging =========== */
-static const char *tags[] = { "  1   ", "  2   ", "  3   ", "  4   ", "  5   ", "  6   ", "  7   ", "  8   ", "  9  " };
+static const char *tags[] = { "  1   ", "  2   ", "  3   ", "  4   ", "  5   ", "  6   ", "  7   ", "  8 󰆧  ", "  9   " };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -94,6 +94,7 @@ static const Rule rules[] = {
 	{ "teams-for-linux", 	                    NULL,                 	NULL,           1 << 6,                 0,                        -1 },
 	{ "microsoft teams - preview", 	            NULL,                 	NULL,           1 << 6,                 0,                        -1 },
     { "VirtualBox Manager", 	 		        NULL,                 	NULL,           0,                      1,                        -1 },
+    { "Thunar", 	 		                    NULL,                 	NULL,           0,                      1,                        -1 },
 	{ "Pavucontrol",	 	                    NULL,                 	NULL,           0,   	  	            1,                        -1 },
 	{ NULL,		  		"spterm",		        NULL,		SPTAG(0),		1,			  -1 },
 	{ NULL,		  		"spfm",			        NULL,		SPTAG(1),		1,			  -1 },
