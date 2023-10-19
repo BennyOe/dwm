@@ -32,47 +32,33 @@ static const int vertpadbar = 6;    /* vertical padding for statusbar */
 static const Bool viewontag = True; /* Switch view on tag switch */
 
 /* ========== Fonts ==========*/
-static const char *fonts[] = {
-    "Jetbrains Nerd Font:size=11:antialias=true:autohint=true",
-    "FontAwesome:size=10:antialias=true:autohint=true"};
-static const char dmenufont[] = "monospace:size=10";
+static const char *fonts[]          = { "Ubuntu Nerd Font:size=12:antialias=true:autohint=true",
+					"FontAwesome:size=12:antialias=true:autohint=true" };
+static const char dmenufont[]       = "monospace:size=10";
 
 /*========== Colors and Opacity ==========*/
-static const char col_gray1[] = "#282c34";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#ABB2BF";
-static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#56B6C2";
-static const char col_purple[] = "#c678DD";
-static const char col_green[] = "#98c379";
-static const char col_blue[] = "#61afef";
-static const char col_black[] = "#000000";
-static const char col_red[] = "#E06C75";
-static const char col_yellow[] = "#E5C07B";
-static const char col_white[] = "#ffffff";
+static const char col_gray1[]       = "#15161e";
+static const char col_gray2[]       = "#414868";
+static const char col_gray3[]       = "#a9b1d6";
+static const char col_gray4[]       = "#c0caf5";
+static const char col_cyan[]        = "#7dcfff";
+static const char col_purple[]      = "#bb9af7";
+static const char col_green[]       = "#9ece6a";
+static const char col_blue[]        = "#7aa2f7";
+static const char col_black[]       = "#000000";
+static const char col_red[]         = "#f7768e";
+static const char col_yellow[]      = "#e0af68";
+static const char col_white[]       = "#ffffff";
 
-static const char *colors[][3] = {
-    /*       		      fg         bg          border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_purple},
-    [SchemeStatus] = {col_gray3, col_gray1,
-                      "#000000"}, // Statusbar right {text,background,not used
-                                  // but cannot be empty}
-    [SchemeTagsSel] = {col_gray4, col_blue,
-                       "#000000"}, // Tagbar left selected {text,background,not
-                                   // used but cannot be empty}
-    [SchemeTagsNorm] =
-        {col_gray3, col_gray1,
-         "#000000"}, // Tagbar left unselected {text,background,not used but
-                     // cannot be empty}
-    [SchemeInfoSel] =
-        {col_gray4, col_gray1,
-         "#000000"}, // infobar middle  selected {text,background,not used but
-                     // cannot be empty}
-    [SchemeInfoNorm] =
-        {col_gray3, col_gray1,
-         "#000000"}, // infobar middle  unselected {text,background,not used but
-                     // cannot be empty}
+static const char *colors[][3]      = {
+/*       		      fg         bg          border   */
+	[SchemeNorm]      = { col_gray3, col_gray1,  col_gray2  },
+	[SchemeSel]       = { col_gray4, col_cyan,   col_purple },
+	[SchemeStatus]    = { col_gray3, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]   = { col_gray1, col_blue,   "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    	[SchemeTagsNorm]  = { col_gray3, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    	[SchemeInfoSel]   = { col_gray4, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    	[SchemeInfoNorm]  = { col_gray3, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /*========== Scratchpads ==========*/
