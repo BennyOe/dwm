@@ -100,14 +100,15 @@ static const Rule rules[] = {
      *	WM_CLASS(STRING) = instance, class
      *	WM_NAME(STRING) = title
      */
-    /* class      	 		                    instance  i		title
-       tags mask   		isfloating 		  monitor */
+    /* class      	 		                    instance  i
+       title tags mask   		isfloating 		  monitor */
     {"Gimp", NULL, NULL, 0, 1, -1},
-    //{ "Brave",       		                    NULL,			NULL,		1 << 1,
-    //0,			  -1 },
+    //{ "Brave",       		                    NULL,
+    // NULL,
+    // 1
+    //<< 1, 0,			  -1 },
     {"Mailspring", NULL, NULL, 1 << 3, 0, -1},
-    //{ "Thunar",      		                    NULL,                 	NULL,
-    //1 << 4,                 0,                        -1 },
+    //{ "Thunar",      		                    NULL, NULL, 1 << 4, 0, -1 },
     {"jetbrains-clion", NULL, NULL, 1 << 2, 0, -1},
     {"jetbrains-idea", NULL, NULL, 1 << 2, 0, -1},
     {"jetbrains-webstorm", NULL, NULL, 1 << 2, 0, -1},
@@ -116,13 +117,17 @@ static const Rule rules[] = {
     {"Signal", NULL, NULL, 1 << 5, 0, 1},
     {"whatsapp-nativefier-d40211", NULL, NULL, 1 << 5, 0, 1},
     {"discord", NULL, NULL, 1 << 5, 0, 1},
+    {"Slack", NULL, NULL, 1 << 4, 0, 1},
     {"zoom", NULL, NULL, 1 << 6, 0, -1},
     {"teams-for-linux", NULL, NULL, 1 << 6, 0, -1},
     {"microsoft teams - preview", NULL, NULL, 1 << 6, 0, -1},
     {"Pavucontrol", NULL, NULL, 0, 1, -1},
+    {"Fig", NULL, NULL, 0, 1, -1},
     {NULL, "spterm", NULL, SPTAG(0), 1, -1},
     {NULL, "spfm", NULL, SPTAG(1), 1, -1},
     {NULL, "keepassxc", NULL, SPTAG(2), 0, -1},
+    {"Juce Plug-In Host", NULL, NULL, 0, 1, -1},
+
 };
 
 /*========== Layout(s) ========== */
@@ -182,7 +187,7 @@ static Key keys[] = {
     /* modifier                     key        function             argument */
     {Mod1Mask, XK_space, spawn, CMD("rofi -show drun")},
     {MODKEY, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_b, togglebar, {0}},
+    {MODKEY | ShiftMask, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_Up, incnmaster, {.i = +1}},
@@ -236,12 +241,14 @@ static Key keys[] = {
     {MODKEY | ShiftMask, XK_r, quit, {1}},
 
     /* Apps */
-    {MODKEY, XK_c, spawn, CMD("brave")},
+    {MODKEY, XK_b, spawn, CMD("brave")},
+    {MODKEY, XK_c, spawn, CMD("google-chrome-stable")},
+    {MODKEY, XK_s, spawn, CMD("slack")},
     {MODKEY, XK_x, spawn, CMD("st -e 'ranger'")},
     {MODKEY, XK_e, spawn, CMD("thunar")},
     {MODKEY | ControlMask, XK_l, spawn, CMD("multilockscreen -l dimblur")},
     //{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn, CMD("signal-desktop;
-    //whatsapp-for-linux; discord") },
+    // whatsapp-for-linux; discord") },
     {MODKEY | ShiftMask, XK_c, spawn, CMD("~/.local/bin/communications.sh")},
     {MODKEY | ShiftMask, XK_t, spawn, CMD("pkill picom")},
     {MODKEY | ControlMask, XK_t, spawn, CMD("picom -b")},
