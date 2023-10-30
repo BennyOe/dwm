@@ -229,13 +229,13 @@ static Key keys[] = {
     /* Apps */
     {MODKEY, XK_b, spawn, CMD("brave")},
     {MODKEY, XK_c, spawn, CMD("google-chrome-stable")},
-    {MODKEY, XK_s, spawn, CMD("slack")},
     {MODKEY, XK_x, spawn, CMD("st -e 'ranger'")},
     {MODKEY, XK_e, spawn, CMD("thunar")},
     {MODKEY | ControlMask, XK_l, spawn, CMD("multilockscreen -l dimblur")},
     //{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn, CMD("signal-desktop;
     // whatsapp-for-linux; discord") },
     {MODKEY | ShiftMask, XK_c, spawn, CMD("~/.local/bin/communications.sh")},
+    {MODKEY | XK_s, spawn, CMD("~/.local/bin/slack.sh")},
     {MODKEY | ShiftMask, XK_t, spawn, CMD("pkill picom")},
     {MODKEY | ControlMask, XK_t, spawn, CMD("picom -b")},
     {MODKEY | ControlMask, XK_m, spawn, CMD("pavucontrol")},
