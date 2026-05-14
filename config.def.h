@@ -60,8 +60,10 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd1[] = {"ghostty", "--x11-instance-name=spterm", "--window-width=160", "--window-height=50", NULL };
+const char *spcmd2[] = {"ghostty", "--x11-instance-name=spfm", "--window-width=144", "--window-height=41", "-e", "yazi", NULL };
+// const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+// const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
@@ -88,6 +90,7 @@ static const Rule rules[] = {
 	{ "jetbrains-pycharm",       	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
 	{ "jetbrains-studio",        	            NULL,                 	NULL,           1 << 2,                 0,                        -1 },
 	{ "Signal", 	       		                NULL,                 	NULL,           1 << 5,                 0,                         1 },
+    { "org.mozilla.Thunderbird",                NULL,                 	NULL,           1 << 3,                 0,                         1 },
 	{ "Whatsapp-for-linux", 	                NULL,                 	NULL,           1 << 5,                 0,                         1 },
 	{ "discord", 	 		                    NULL,                 	NULL,           1 << 5,                 0,                         1 },
 	{ "zoom", 	 		                        NULL,                 	NULL,           1 << 6,                 0,                        -1 },
@@ -96,6 +99,7 @@ static const Rule rules[] = {
     { "VirtualBox Manager", 	 		        NULL,                 	NULL,           0,                      1,                        -1 },
     { "Thunar", 	 		                    NULL,                 	NULL,           0,                      1,                        -1 },
 	{ "Pavucontrol",	 	                    NULL,                 	NULL,           0,   	  	            1,                        -1 },
+    { "qemu-system-x86_64", 	                NULL,                 	NULL,           0,   	  	            1,                        -1 },
 	{ NULL,		  		"spterm",		        NULL,		SPTAG(0),		1,			  -1 },
 	{ NULL,		  		"spfm",			        NULL,		SPTAG(1),		1,			  -1 },
 	{ NULL,		  		"keepassxc",		    NULL,		SPTAG(2),		0,			  -1 },
@@ -139,14 +143,14 @@ static const Layout layouts[] = {
 /*========== Commands ==========*/
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "ghostty", NULL };
 
 
 #include "movestack.c"
 #include <X11/XF86keysym.h>
 static Key keys[] = {
 	/* modifier                     key        function             argument */
-	{ Mod1Mask,                     XK_space,  spawn,               CMD("rofi -show drun") },
+	{ MODKEY,                     XK_space,  spawn,               CMD("rofi -show drun") },
 	{ MODKEY,  	 	        XK_Return, spawn,               {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,           {0} },
 	{ MODKEY,                       XK_j,      focusstack,          {.i = +1 } },
@@ -159,6 +163,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      movestack,           {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,                {0} },
 	{ MODKEY,                       XK_Tab,    view,                {0} },
+    { MODKEY,                       XK_Escape,    view,                {0} },
 	{ MODKEY,     	        	XK_q,      killclient,          {0} },
 
 	/* Layout manipulation */
@@ -168,7 +173,7 @@ static Key keys[] = {
 	/* Switch to specific layouts */
 	{ MODKEY,                       XK_m,      setlayout,           {.v = &layouts[0]} },
 	{ MODKEY,             		XK_f,      fullscreen,          {1} },
-	{ MODKEY,                       XK_space,  setlayout,           {0} },
+	{ Mod1Mask,                       XK_space,  setlayout,           {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating,      {0} },
 	{ MODKEY,                       XK_0,      view,                {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,                 {.ui = ~0 } },
@@ -206,8 +211,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 		XK_r,      	quit,          {1} },
 
 	/* Apps */
-	{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("firefox") },
-	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("st -e 'ranger'") },
+	/*{ MODKEY,  	 	        XK_c, 	  spawn,               CMD("firefox") },*/
+    { MODKEY,  	 	        XK_c, 	  spawn,               CMD("zen-browser") },
+	{ MODKEY,  	 	        XK_x, 	  spawn,               CMD("ghostty -e 'ya'") },
 	{ MODKEY,  	 	        XK_e, 	  spawn,               CMD("thunar") },
 	{ MODKEY|ControlMask,  	 	        XK_l, 	  spawn,               CMD("betterlockscreen -l dimblur") },
 //{ MODKEY|ShiftMask,  	 	XK_c, 	  spawn,               CMD("signal-desktop; whatsapp-for-linux; discord") },
